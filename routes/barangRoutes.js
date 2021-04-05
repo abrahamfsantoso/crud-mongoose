@@ -1,15 +1,18 @@
-const express = require("express"); // Import express
-const router = express.Router(); // Make a router
+const express = require("express");
 
-// Import middlewares
+//import validator
 const barangValidator = require("../middlewares/validators/barangValidator");
 
-// Import controller
+//import controller
 const barangController = require("../controllers/barangController");
+//make router
+const router = express.Router();
 
-// If POST (/barang)
-// Then, go to transaksiValidator.create
-// If in the transaksiValidator.create can run the next(), it will go to transaksiController.create
+
+router.get("/", barangController.getAll);
+router.get("/:id",barangValidator.getOne, barangController.getOne);
 router.post("/", barangValidator.create, barangController.create);
+router.put("/:id", barangValidator.update, barangController.update);
+router.delete("/:id", barangValidator.delete, barangController.delete);
 
-module.exports = router; // Export router
+module.exports = router;
