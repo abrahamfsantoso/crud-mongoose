@@ -9,6 +9,7 @@ const fileUpload = require("express-fileupload");
 const barangRoutes = require("./routes/barangRoutes");
 const transaksiRoutes = require("./routes/transaksiRoutes");
 const pelangganRoutes = require('./routes/pelangganRoutes');
+const pemasokRoutes = require("./routes/pemasokRoutes");
 
 // Make express app
 const app = express();
@@ -31,6 +32,7 @@ app.use(express.static("public"));
 app.use("/barang", barangRoutes);
 app.use("/transaksi", transaksiRoutes);
 app.use("/pelanggan", pelangganRoutes);
+app.use("/pemasok", pemasokRoutes);
 
 // Running server
 const PORT = 3000 || process.env.PORT
